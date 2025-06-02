@@ -10,8 +10,8 @@ $shop = $_GET['shop'];
 $code = $_GET['code'];
 $hmac = $_GET['hmac'];
 
-$apiKey = getenv('SHOPIFY_API_KEY');
-$secret = getenv('SHOPIFY_API_SECRET');
+$apiKey = "9a5adb07279a98af27fd73da38dabafe";
+$secret = "b75d476419ff5a7ec826b69225f2f318";
 file_put_contents('check_logs.json', "SHOP". $shop  , FILE_APPEND);
 // ✅ HMAC validation (basic security)
 $calculatedHmac = hash_hmac('sha256', http_build_query(array_diff_key($_GET, ['hmac' => ''])), $secret);
