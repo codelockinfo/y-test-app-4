@@ -27,7 +27,7 @@ foreach ($order['line_items'] as $lineItem) {
     if (isset($lineItem['properties']) && is_array($lineItem['properties'])) {
         foreach ($lineItem['properties'] as $property) {
             if (
-                (isset($property['name']) && strtolower($property['name']) === 'preorder') &&
+                (isset($property['name']) && strtolower($property['name']) === 'pre-order') &&
                 (isset($property['value']) && strtolower($property['value']) === 'yes')
             ) {
                 $isPreorder = true;
@@ -46,7 +46,7 @@ if ($isPreorder) {
     $updateData = [
         'order' => [
             'id' => $orderId,
-            'tags' => 'preorder'
+            'tags' => 'pre-order'
         ]
     ];
 
@@ -67,14 +67,14 @@ if ($isPreorder) {
 
     if ($httpCode >= 200 && $httpCode < 300) {
         http_response_code(200);
-        file_put_contents('order_create_log.json', "STEP2 Order updated with preorder tag".print_r($response,1) , FILE_APPEND);
+        file_put_contents('order_create_log.json', "STEP2 Order updated with pre-order tag".print_r($response,1) , FILE_APPEND);
     } else {
         // Fallback: Update order note_attributes
         $noteData = [
             'order' => [
                 'id' => $orderId,
                 'note_attributes' => [
-                    ['name' => 'preorder', 'value' => 'Yes']
+                    ['name' => 'pre-order', 'value' => 'Yes']
                 ]
             ]
         ];
@@ -102,7 +102,7 @@ if ($isPreorder) {
         }
     }
 } else {
-    file_put_contents('order_create_log.json', "STEP0 No preorder item found", FILE_APPEND);
+    file_put_contents('order_create_log.json', "STEP0 No pre-order item found", FILE_APPEND);
     http_response_code(200);
 }
 
