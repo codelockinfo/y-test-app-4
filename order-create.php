@@ -2,9 +2,9 @@
 
 
 // Replace with your app's Shopify access token
-$accessToken = 'shpua_3ce3b6454ad2457db7a898c6b4ced64f';
+$accessToken = 'shpua_3fb3363e69226b788eba2955191c8b0f';
 // Replace with your Shopify store domain
-$storeUrl = 'yogin-testing-june-1.myshopify.com';
+$storeUrl = 'yogin-test-new-2025.myshopify.com';
 
 // Get the incoming webhook data
 $webhookData = file_get_contents('php://input');
